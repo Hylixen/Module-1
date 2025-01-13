@@ -35,15 +35,25 @@ def neg(x: float) -> float:
 
 
 # - lt
-def lt(x: float, y: float) -> bool:
+def lt(x: float, y: float) -> float:
     """Check x < y"""
-    return x < y
+    if x < y:
+        return 1.0
+    return 0.0
 
+# - gt
+def gt(x: float, y: float) -> float:
+    """Check x > y"""
+    if x > y:
+        return 1.0
+    return 0.0
 
 # - eq
-def eq(x: float, y: float) -> bool:
+def eq(x: float, y: float) -> float:
     """Check x == y"""
-    return x == y
+    if x == y:
+        return 1.0
+    return 0.0
 
 
 # - max
@@ -72,13 +82,19 @@ def sigmoid(x: float) -> float:
     x = math.exp(-x)
     return 1 / (1 + x)
 
+def sigmoid_back(act: float, cof: float) -> float:
+    r"""Sigmod backward:
+    act = sigmod(x)
+    sigmod'(x) = act * (1 - act)     
+    """
+    return cof * act * (1 - act)
 
 # - relu
 def relu(x: float) -> float:
     r"""$relu(x) = x$ if x > 0 else $relu(x) = 0$"""
-    if x >= 0:
+    if x >= 0.0:
         return x
-    return 0
+    return 0.0
 
 
 # - log
